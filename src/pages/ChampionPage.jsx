@@ -1,19 +1,8 @@
 import styled from 'styled-components';
 import React from 'react';
 import Container from '@components/Container';
-import Header from '@components/Header';
-import {
-  Box,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-  Button,
-} from '@chakra-ui/react';
+import Header from '@components/header';
+import { Select, Box } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 function ChampionPage() {
@@ -30,18 +19,11 @@ function ChampionPage() {
       >
         <MainSection />
         <SelectTeerContainer display={'flex'} mt={'50px'}>
-          <Menu>
-            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-              Actions
-            </MenuButton>
-            <MenuList>
-              <MenuItem>Download</MenuItem>
-              <MenuItem>Create a Copy</MenuItem>
-              <MenuItem>Mark as Draft</MenuItem>
-              <MenuItem>Delete</MenuItem>
-              <MenuItem>Attend a Workshop</MenuItem>
-            </MenuList>
-          </Menu>
+        <Select variant="brandPrimary" w={'200px'}>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </Select>
         </SelectTeerContainer>
         <ContentContainer />
       </Box>
@@ -54,20 +36,24 @@ export default ChampionPage;
 const MainSection = styled.div`
   width: 1320px;
   height: 200px;
-  background-color: black;
+  background-color: #10131C;
   border-radius: 5px;
-`;
+  border: 2px solid rgba(115, 117, 124, 0.6);
+`
 
 const SelectTeerContainer = styled.div`
   width: 1320px;
   height: 100px;
-  background-color: black;
+  background-color: #10131C;
   border-radius: 5px;
+  display:flex;
+  align-items: center;
+  padding: 0 15px 0 15px;
 `;
 
 const ContentContainer = styled.div`
   width: 1320px;
   height: 500px;
-  background-color: black;
+  background-color: #10131C;
   border-radius: 5px;
 `;
