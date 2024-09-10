@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import backgroundImage from '@assets/img/Main_Background.png';
 import Container from '@components/Container';
 import { Link } from '@chakra-ui/react';
-import Header from '@components/header';
+import Header from '@components/Header';
 function SplashPage() {
   return (
     <Container>
