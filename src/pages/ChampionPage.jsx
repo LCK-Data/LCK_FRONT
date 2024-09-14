@@ -2,8 +2,12 @@ import styled from 'styled-components';
 import React from 'react';
 import Container from '@components/Container';
 import { Select, Box } from '@chakra-ui/react';
-import { ChevronDownIcon } from '@chakra-ui/icons';
+import { SearchIcon } from '@chakra-ui/icons';
 import Header from '@components/Header';
+import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import ChampionIcon from '@components/Champion';
+import ChampionCateogoryTap from '@components/ChampionCategoriTap';
+
 function ChampionPage() {
   return (
     <Container>
@@ -31,8 +35,29 @@ function ChampionPage() {
           </Select>
         </SelectTeerContainer>
         <ContentContainer>
-          <ChampionBlock></ChampionBlock>
-          <ChampionInfoBlock></ChampionInfoBlock>
+          <ChampionBlock>
+            <InnerContent>
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <SearchIcon color="gray.300" />
+                </InputLeftElement>
+                <Input placeholder="챔피언을 입력하세요" />
+              </InputGroup>
+            </InnerContent>
+            <InnerContent>
+              <Box>탑</Box>
+              <Box>정글</Box>
+              <Box>미드</Box>
+              <Box>원딜</Box>
+              <Box>서폿</Box>
+            </InnerContent>
+            <ChampionContainer>
+              <ChampionIcon />
+            </ChampionContainer>
+          </ChampionBlock>
+          <ChampionInfoBlock>
+            <ChampionCateogoryTap />
+          </ChampionInfoBlock>
         </ContentContainer>
       </Box>
     </Container>
@@ -64,7 +89,7 @@ const SelectTeerContainer = styled.div`
 const ContentContainer = styled.div`
   display: flex;
   width: 1320px;
-  height: 500px;
+  height: auto;
   background-color: #10131c;
   border-radius: 5px;
   border: 2px solid rgba(115, 117, 124, 0.6);
@@ -75,11 +100,41 @@ const ContentContainer = styled.div`
 const ChampionBlock = styled.div`
   display: flex;
   flex: 1;
-  background-color: #fefefe;
+  background-color: #10131c;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  height: 700px;
+  /* Chrome, Safari, Edge */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Firefox */
+  scrollbar-width: none; /* For Firefox */
+
+  /* IE and older versions of Edge */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+`;
+
+const InnerContent = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  gap: 20px;
+  height: auto;
+  max-height: 100px;
+  align-items: center;
+  color: white;
+`;
+
+const ChampionContainer = styled.div`
+  width: 100%;
 `;
 
 const ChampionInfoBlock = styled.div`
   display: flex;
   flex: 3;
   background-color: #fefefe;
+  height: 700px;
 `;
