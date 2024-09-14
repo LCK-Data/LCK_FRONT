@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, { useState } from 'react';
 import Container from '@components/Container';
 import { Select, Box } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
@@ -7,8 +7,15 @@ import Header from '@components/Header';
 import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import ChampionIcon from '@components/Champion';
 import ChampionCateogoryTap from '@components/ChampionCategoriTap';
+import ChampionTable from '@components/ChampionTable';
 
 function ChampionPage() {
+  const [category, setCategory] = useState('전체');
+
+  const onClickTap = (cat) => {
+    setCategory(cat);
+  };
+
   return (
     <Container>
       <Header />
@@ -56,7 +63,11 @@ function ChampionPage() {
             </ChampionContainer>
           </ChampionBlock>
           <ChampionInfoBlock>
-            <ChampionCateogoryTap />
+            <ChampionCateogoryTap
+              category={category}
+              onClickTap={(cat) => onClickTap(cat)}
+            />
+            <ChampionTable category={category} />
           </ChampionInfoBlock>
         </ContentContainer>
       </Box>
@@ -134,7 +145,19 @@ const ChampionContainer = styled.div`
 
 const ChampionInfoBlock = styled.div`
   display: flex;
+  flex-direction: column;
   flex: 3;
   background-color: #fefefe;
   height: 700px;
+
+  /* Chrome, Safari, Edge */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Firefox */
+  scrollbar-width: none; /* For Firefox */
+
+  /* IE and older versions of Edge */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
 `;
